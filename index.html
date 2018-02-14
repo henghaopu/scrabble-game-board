@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="views/styles.css">
+    
+    <title></title>
+</head>
+
+<body>
+    <div id="root">
+        
+        <table>
+
+            <tr>
+                <td id="td20" @dragover="onDragOver" @drop="onDrop"></td>
+                <td id="td21" @dragover="onDragOver" @drop="onDrop"></td>
+                <td id="td22" @dragover="onDragOver" @drop="onDrop"></td>
+                <td id="td23" @dragover="onDragOver" @drop="onDrop"></td>
+                <td id="td24" @dragover="onDragOver" @drop="onDrop"></td>
+            </tr>
+
+        </table>
+    
+        <table>
+
+            <tr>
+                <td id="slot0" @dragover="onDragOver" @drop="onDrop">
+                    
+                    <img id="tile0" src="resources/images/tile.svg" draggable="true" @dragstart="onDragStart">
+                    
+                </td>
+            </tr>
+
+        </table>
+        
+    </div>
+    
+    <script src="view-models/vue.js"></script>
+        
+    <script src="models/game-board-model.js"></script>
+    <script src="view-models/game-board-view-model.js"></script>    
+    
+</body>
+</html>

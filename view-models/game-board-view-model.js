@@ -16,7 +16,10 @@ var vm = new Vue({
         
         // Screen Tap
         onClickTile: selectAndDeselectTile,
-        onClickSquare: putTileInSquare
+        onClickSquare: putTileInSquare,
+        
+        // place tile
+        onClickPlace: refillSlots
     },
     
     mounted() {
@@ -35,6 +38,7 @@ var vm = new Vue({
     }
     
 })
+
 
 
 

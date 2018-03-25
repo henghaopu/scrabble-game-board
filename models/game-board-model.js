@@ -240,12 +240,14 @@ var putTileInSquare = function (squareId) {
             
         } else { // move around or distroy
             var selectedTileCopy = document.getElementById(this.selectedTileCopyId);
-            //console.log("selectedSquare.hasChildNodes(): " + selectedSquare.hasChildNodes());
-            //
+            //console.log("selectedSquare.hasChildNodes(): " + selectedSquare.hasChildNodes()); 
+            
             if(!selectedSquare.hasChildNodes()) {
-                selectedSquare.appendChild(selectedTileCopy);
+                //console.log(selectedTileCopy.children[0].getAttribute("fill"));
+                if (selectedTileCopy.children[0].getAttribute("fill") !== "#D3D3D3") {
+                    selectedSquare.appendChild(selectedTileCopy);
+                }
             } else {
-                
                 var childTile = selectedSquare.children[0];
                 // only current round tiles can be put back 
                 //console.log(childTile.children[0].attributes[7].nodeValue);
@@ -313,6 +315,7 @@ var refillSlots = function () {
     
     this.currentRoundtileIdsOnBoard = [];
     this.selectedTileId = "";
+    
 }
 
 /*

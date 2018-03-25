@@ -213,12 +213,11 @@ var putTileInSquare = function (squareId) {
     //console.log("called putTileInSquare()");
     var square = document.getElementById(squareId);
     // if a tile in a slot has been clicked 
-    if(this.selectedTileId !== "" ) {
+    //if(this.selectedTileId !== "") {
         // get the square
         var selectedSquare = document.getElementById(squareId);
-        
         // copy
-        if(this.selectedTileCopyId == "" && selectedSquare.children.length === 0) {
+        if(this.selectedTileCopyId === "" && selectedSquare.children.length === 0) {
             // get the tile 
             var selectedTile = document.getElementById(this.selectedTileId);
             // copy the tile
@@ -241,15 +240,16 @@ var putTileInSquare = function (squareId) {
             
         } else { // move around or distroy
             var selectedTileCopy = document.getElementById(this.selectedTileCopyId);
-            console.log(selectedSquare.hasChildNodes());
+            //console.log("selectedSquare.hasChildNodes(): " + selectedSquare.hasChildNodes());
+            //
             if(!selectedSquare.hasChildNodes()) {
                 selectedSquare.appendChild(selectedTileCopy);
             } else {
                 
                 var childTile = selectedSquare.children[0];
                 // only current round tiles can be put back 
-                //console.log(childTile.children);
-                //if (childTile.children[0].fill !== "#D3D3D3") {
+                //console.log(childTile.children[0].attributes[7].nodeValue);
+                if (childTile.children[0].attributes[7].nodeValue !== "#D3D3D3") {
                     //selectedSquare.removeChild(selectedTileCopy);
                     selectedSquare.removeChild(childTile);
                     // update slot information
@@ -264,7 +264,7 @@ var putTileInSquare = function (squareId) {
                     }
                     // remove tile id in the current round
                     this.currentRoundtileIdsOnBoard.pop(this.selectedTileCopyId);
-                //} 
+                } 
             }   
         }
         
@@ -283,7 +283,7 @@ var putTileInSquare = function (squareId) {
         this.selectedSquareId = selectedSquare.id;
         
         //this.selectedTileId = "";
-    }
+    //}
 }
 
 var refillSlots = function () {

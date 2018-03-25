@@ -218,7 +218,7 @@ var putTileInSquare = function (squareId) {
         var selectedSquare = document.getElementById(squareId);
         
         // copy
-        if(this.selectedTileCopyId == "") {
+        if(this.selectedTileCopyId == "" && selectedSquare.children.length === 0) {
             // get the tile 
             var selectedTile = document.getElementById(this.selectedTileId);
             // copy the tile
@@ -241,25 +241,30 @@ var putTileInSquare = function (squareId) {
             
         } else { // move around or distroy
             var selectedTileCopy = document.getElementById(this.selectedTileCopyId);
+            console.log(selectedSquare.hasChildNodes());
             if(!selectedSquare.hasChildNodes()) {
                 selectedSquare.appendChild(selectedTileCopy);
             } else {
-                // every tile can be put back 
+                
                 var childTile = selectedSquare.children[0];
-                //selectedSquare.removeChild(selectedTileCopy);
-                selectedSquare.removeChild(childTile);
-                // update slot information
-                for(var i = 0; i < tileSlotNumber; i++) {
-                    if (childTile.id === this.tileSlots[i].tile.id) {
-                    //if (this.selectedTileId === this.tileSlots[i].tile.id) {
-                        //this.tileSlots[i] = {};
-                        this.tileSlots[i].hasTile = true;
-                        this.tileSlots[i].tile.visibility = "visible";
-                        this.tileSlots[i].tile.highlightedColor = "#000000";
+                // only current round tiles can be put back 
+                //console.log(childTile.children);
+                //if (childTile.children[0].fill !== "#D3D3D3") {
+                    //selectedSquare.removeChild(selectedTileCopy);
+                    selectedSquare.removeChild(childTile);
+                    // update slot information
+                    for(var i = 0; i < tileSlotNumber; i++) {
+                        if (childTile.id === this.tileSlots[i].tile.id) {
+                        //if (this.selectedTileId === this.tileSlots[i].tile.id) {
+                            //this.tileSlots[i] = {};
+                            this.tileSlots[i].hasTile = true;
+                            this.tileSlots[i].tile.visibility = "visible";
+                            this.tileSlots[i].tile.highlightedColor = "#000000";
+                        }
                     }
-                }
-                // remove tile id in the current round
-                this.currentRoundtileIdsOnBoard.pop(this.selectedTileCopyId);
+                    // remove tile id in the current round
+                    this.currentRoundtileIdsOnBoard.pop(this.selectedTileCopyId);
+                //} 
             }   
         }
         
@@ -305,6 +310,9 @@ var refillSlots = function () {
         tile.children[1].setAttribute("fill", "#000000");
         tile.children[2].setAttribute("fill", "#000000");
     }
+    
+    this.currentRoundtileIdsOnBoard = [];
+    this.selectedTileId = "";
 }
 
 /*

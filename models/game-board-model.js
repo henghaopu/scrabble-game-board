@@ -250,8 +250,8 @@ var putTileInSquare = function (squareId) {
             } else {
                 var childTile = selectedSquare.children[0];
                 // only current round tiles can be put back 
-                //console.log(childTile.children[0].attributes[7].nodeValue);
-                if (childTile.children[0].attributes[7].nodeValue !== "#D3D3D3") {
+                //console.log(childTile.children[0].getAttribute("fill"));
+                if (childTile.children[0].getAttribute("fill") !== "#D3D3D3") {
                     //selectedSquare.removeChild(selectedTileCopy);
                     selectedSquare.removeChild(childTile);
                     // update slot information

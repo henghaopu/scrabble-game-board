@@ -328,6 +328,24 @@ var refillSlots = function () {
     this.currentRoundtileIdsOnBoard = [];
     this.selectedTileId = "";
     
+    // create 2d array testing data
+//    var arr = new Array(row);
+//    for (i = 0; i < row; i++) {
+//        arr[i] = new Array(column);
+//        for (j = 0; j < column; j++) {
+//            arr[i][j] = 'A';
+//        }
+//    }
+    // store array data into squares
+//    for (i = 0; i < row; i++) {
+//        for (j = 0; j < column; j++) {
+//            var square = document.getElementById('square-' + i + '-' + j);
+//            if (square.hasChildNodes()) {
+//                square.childNodes[0].children[1].innerHTML = arr[i][j];    
+//            }   
+//        }
+//    }
+    
     // 20180331 Heng-Hao Pu: prepare for the connection with engine
     // Make a request for a user with a given ID
 //    axios.get('refill.json')
